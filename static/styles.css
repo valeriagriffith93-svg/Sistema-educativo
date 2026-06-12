@@ -1,0 +1,335 @@
+/* ===== IMPORTAR FUENTE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY CON FONDO ANIMADO ===== */
+body {
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0e6ff;
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(249, 100, 210, 0.45) 0%, transparent 35%),
+        radial-gradient(circle at 80% 5%,  rgba(139, 92, 246, 0.4)  0%, transparent 30%),
+        radial-gradient(circle at 95% 60%, rgba(167, 60, 230, 0.35) 0%, transparent 28%),
+        radial-gradient(circle at 20% 85%, rgba(244, 63, 142, 0.4)  0%, transparent 32%),
+        radial-gradient(circle at 60% 90%, rgba(192, 132, 252, 0.3) 0%, transparent 30%),
+        linear-gradient(145deg, #fce4f3 0%, #ede0ff 40%, #ddd6fe 70%, #fce7f3 100%);
+    overflow: hidden;
+}
+
+/* Blob arriba derecha */
+body::before {
+    content: '';
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    top: -100px;
+    right: -80px;
+    background: linear-gradient(135deg, rgba(201, 91, 230, 0.35), rgba(124, 58, 237, 0.25));
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    animation: flotar 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Blob abajo izquierda */
+body::after {
+    content: '';
+    position: fixed;
+    width: 360px;
+    height: 360px;
+    bottom: -80px;
+    left: -70px;
+    background: linear-gradient(135deg, rgba(244, 63, 142, 0.28), rgba(168, 85, 247, 0.22));
+    border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
+    animation: flotar 11s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes flotar {
+    0%   { transform: translate(0, 0)       rotate(0deg);  }
+    33%  { transform: translate(14px, -20px) rotate(5deg);  }
+    66%  { transform: translate(-10px, 12px) rotate(-4deg); }
+    100% { transform: translate(0, 0)       rotate(0deg);  }
+}
+
+/* ===== CONTENEDOR LOGIN ===== */
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 460px;
+    padding: 20px;
+}
+
+/* ===== TARJETA FORMULARIO ===== */
+.login-form {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow:
+        0 20px 60px rgba(124, 58, 237, 0.18),
+        0 4px 16px rgba(201, 91, 230, 0.12);
+    padding: 48px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: entrar 0.6s ease both;
+}
+
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== TÍTULO ===== */
+.login-form h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    color: #4c1d95;
+    margin-bottom: 6px;
+    position: relative;
+}
+
+/* Línea decorativa bajo el título */
+.login-form h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #c95be6, #7c3aed);
+    border-radius: 4px;
+    margin: 10px auto 0;
+}
+
+/* ===== MENSAJES FLASH ===== */
+.flash-message {
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.error-message {
+    background: rgba(244, 63, 142, 0.12);
+    color: #be185d;
+    border: 1px solid rgba(244, 63, 142, 0.3);
+}
+
+.success-message {
+    background: rgba(124, 58, 237, 0.1);
+    color: #5b21b6;
+    border: 1px solid rgba(124, 58, 237, 0.25);
+}
+
+/* ===== GRUPOS DE FORMULARIO ===== */
+.form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-group .icon,
+.form-group > .fa-chalkboard-teacher {
+    position: absolute;
+    left: 16px;
+    font-size: 16px;
+    color: #a855f7;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== INPUTS ===== */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 16px 16px 16px 46px;
+    border: 2px solid rgba(168, 85, 247, 0.2);
+    border-radius: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4c1d95;
+    background: rgba(255, 255, 255, 0.7);
+    outline: none;
+    transition: border 0.25s, box-shadow 0.25s, background 0.25s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.form-group input::placeholder {
+    color: #c4b5fd;
+    font-weight: 600;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #a855f7;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15);
+}
+
+.form-group select {
+    color: #7c3aed;
+    cursor: pointer;
+}
+
+.form-group select option {
+    font-weight: 700;
+    color: #4c1d95;
+    background: #fff;
+}
+
+/* ===== OJO CONTRASEÑA ===== */
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    font-size: 16px;
+    color: #a855f7;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover {
+    color: #7c3aed;
+}
+
+/* ===== BOTÓN PRINCIPAL ===== */
+.btn {
+    position: relative;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #c95be6 0%, #7c3aed 100%);
+    box-shadow:
+        0 10px 28px rgba(124, 58, 237, 0.45),
+        0 4px 10px rgba(124, 58, 237, 0.25);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 4px;
+}
+
+/* Círculos decorativos del botón */
+.btn::before {
+    content: '';
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    top: -35px;
+    right: -20px;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.10);
+    bottom: -20px;
+    left: 16px;
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 16px 38px rgba(124, 58, 237, 0.55),
+        0 6px 14px rgba(124, 58, 237, 0.3);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* ===== OLVIDASTE CONTRASEÑA ===== */
+.forgot-password {
+    text-align: center;
+    margin-top: -6px;
+}
+
+.forgot-password a {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a855f7;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgot-password a:hover {
+    color: #7c3aed;
+    text-decoration: underline;
+}
+
+/* ===== LINK REGISTRO ===== */
+.signup-link {
+    text-align: center;
+    padding-top: 6px;
+    border-top: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.signup-link p {
+    font-size: 14px;
+    font-weight: 700;
+    color: #7c3aed;
+}
+
+.signup-text {
+    color: #c95be6;
+    text-decoration: none;
+    font-weight: 900;
+    transition: color 0.2s;
+}
+
+.signup-text:hover {
+    color: #7c3aed;
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .login-form {
+        padding: 36px 24px;
+        border-radius: 24px;
+    }
+
+    .login-form h2 {
+        font-size: 26px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 16px;
+    }
+}

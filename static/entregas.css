@@ -1,0 +1,331 @@
+/* ===== IMPORTAR FUENTE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY — FONDO OSCURO ===== */
+body {
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    background-color: #2d1b69;
+    background-image:
+        radial-gradient(circle at 5%  10%, rgba(201, 91, 230, 0.5)  0%, transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(124, 58, 237, 0.45) 0%, transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(244, 63, 142, 0.4)  0%, transparent 30%),
+        radial-gradient(circle at 15% 85%, rgba(139, 92, 246, 0.45) 0%, transparent 28%),
+        linear-gradient(145deg, #1e0a4a 0%, #2d1b69 40%, #3b1f7a 70%, #1a0a40 100%);
+    padding: 40px 24px 60px;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    top: -120px;
+    right: -90px;
+    background: linear-gradient(135deg, rgba(201, 91, 230, 0.3), rgba(124, 58, 237, 0.2));
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    animation: flotar 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    width: 380px;
+    height: 380px;
+    bottom: -90px;
+    left: -80px;
+    background: linear-gradient(135deg, rgba(244, 63, 142, 0.25), rgba(168, 85, 247, 0.2));
+    border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
+    animation: flotar 12s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes flotar {
+    0%   { transform: translate(0, 0)        rotate(0deg);  }
+    33%  { transform: translate(14px, -20px)  rotate(5deg);  }
+    66%  { transform: translate(-10px, 12px)  rotate(-4deg); }
+    100% { transform: translate(0, 0)        rotate(0deg);  }
+}
+
+/* ===== WRAPPER ===== */
+.wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    animation: entrar 0.6s ease both;
+}
+
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ===== TÍTULO ===== */
+h1 {
+    font-size: 34px;
+    font-weight: 900;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 0 2px 24px rgba(201, 91, 230, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+h1 i { font-size: 32px; color: #c4b5fd; }
+
+h1::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #f43f8e, #a855f7);
+    border-radius: 4px;
+    margin: 12px auto 0;
+}
+
+/* ===== TABLA WRAP ===== */
+.tabla-wrap {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+/* ===== TABLA ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+table, th, td { border: none !important; }
+
+thead tr { background: rgba(255, 255, 255, 0.08); }
+
+th {
+    padding: 16px 16px;
+    font-size: 11px;
+    font-weight: 900;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    text-align: left;
+}
+
+/* ===== ANCHOS COLUMNAS ===== */
+th:nth-child(1) { width: 13%; }  /* Estudiante */
+th:nth-child(2) { width: 8%;  }  /* Grupo */
+th:nth-child(3) { width: 14%; }  /* Tarea */
+th:nth-child(4) { width: 14%; }  /* Archivo */
+th:nth-child(5) { width: 10%; }  /* Nota */
+th:nth-child(6) { width: 22%; }  /* Comentario */
+th:nth-child(7) { width: 11%; }  /* Acción */
+
+tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+    transition: background 0.2s;
+}
+
+tbody tr:last-child { border-bottom: none !important; }
+
+tbody tr:hover { background: rgba(255, 255, 255, 0.08); }
+
+td {
+    padding: 16px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Estudiante */
+td:nth-child(1) { font-weight: 800; }
+
+/* Badge grupo */
+td:nth-child(2) .badge-grupo {
+    background: rgba(168, 85, 247, 0.2);
+    color: #e9d5ff;
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* Tarea */
+td:nth-child(3) { color: #e9d5ff; }
+
+/* Archivo — link estilo pill */
+td:nth-child(4) a,
+td:nth-child(4) span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #c4b5fd;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    word-break: break-all;
+    transition: background 0.2s;
+}
+
+td:nth-child(4) a:hover {
+    background: rgba(168, 85, 247, 0.25);
+    color: #fff;
+}
+
+/* ===== FORMULARIO DENTRO DE TD ===== */
+td form {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    animation: none !important;
+    display: contents;
+}
+
+/* ===== INPUT NOTA ===== */
+.input-nota {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid rgba(168, 85, 247, 0.35);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    text-align: center;
+    transition: border 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.input-nota::placeholder { color: rgba(196, 181, 253, 0.6); }
+
+.input-nota:focus {
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.15);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+/* ===== INPUT COMENTARIO ===== */
+.input-comentario {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    outline: none;
+    transition: border 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.input-comentario::placeholder { color: rgba(196, 181, 253, 0.5); }
+
+.input-comentario:focus {
+    border-color: rgba(168, 85, 247, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+}
+
+/* ===== BOTÓN GUARDAR ===== */
+.btn-guardar {
+    position: relative;
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    color: #fff;
+    background: linear-gradient(135deg, #c95be6, #7c3aed);
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.45);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.btn-guardar i,
+.btn-guardar span { position: relative; z-index: 1; }
+
+.btn-guardar::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    top: -22px;
+    right: -14px;
+}
+
+.btn-guardar:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 24px rgba(124, 58, 237, 0.55);
+}
+
+.btn-guardar:active { transform: scale(0.97); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .tabla-wrap { overflow-x: auto; }
+    table {
+        table-layout: auto;
+        min-width: 860px;
+    }
+    th:nth-child(1), th:nth-child(2), th:nth-child(3),
+    th:nth-child(4), th:nth-child(5), th:nth-child(6),
+    th:nth-child(7) { width: auto; }
+}
+
+@media (max-width: 640px) {
+    h1 { font-size: 24px; }
+    body { padding: 24px 12px 40px; }
+}
+
+.alert-success{
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}

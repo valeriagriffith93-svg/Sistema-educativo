@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregas</title>
+    <link rel="stylesheet" href="../static/entregas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h1>
+            <i class="fas fa-paper-plane"></i>
+            Entregas de Tareas
+        </h1>
+
+        <div class="tabla-wrap">
+            <table>
+                {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-user"></i> Estudiante</th>
+                        <th><i class="fas fa-users"></i> Grupo</th>
+                        <th><i class="fas fa-tasks"></i> Tarea</th>
+                        <th><i class="fas fa-paperclip"></i> Archivo</th>
+                        <th><i class="fas fa-star"></i> Nota</th>
+                        <th><i class="fas fa-comment"></i> Comentario</th>
+                        <th><i class="fas fa-check"></i> Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entrega in entregas %}
+                    <tr>
+                        <td>{{ entrega.usuario }}</td>
+
+                        <td>
+                            <span class="badge-grupo">{{ entrega.grupo }}</span>
+                        </td>
+
+                        <td>{{ entrega.titulo }}</td>
+
+                        <td>
+                            <a href="/descargar/{{ entrega.archivo }}"
+                               target="_blank">
+                                <i class="fas fa-file-download"></i>
+                                {{ entrega.archivo }}
+                            </a>
+                        </td>
+
+                        <form method="POST"
+                              action="/calificar/{{ entrega._id }}">
+
+                        <td>
+                            <input class="input-nota"
+                                   type="text"
+                                   name="nota"
+                                   value="{{ entrega.nota }}"
+                                   placeholder="0 - 5">
+                        </td>
+
+                        <td>
+                            <input class="input-comentario"
+                                   type="text"
+                                   name="comentario"
+                                   value="{{ entrega.comentario }}"
+                                   placeholder="Escribe un comentario...">
+                        </td>
+
+                        <td>
+                            <button class="btn-guardar" type="submit">
+                                <i class="fas fa-save"></i>
+                                <span>Guardar</span>
+                            </button>
+                        </td>
+
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

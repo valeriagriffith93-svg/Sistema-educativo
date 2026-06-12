@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencias</title>
+    <link rel="stylesheet" href="../static/asistencias.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Control de Asistencias</h1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: green;">
+                        {{ message }}
+                    </p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="GET" action="/asistencias">
+            <input type="text" name="grupo" placeholder="Ejemplo: 1102" required>
+            <input type="date" name="fecha" required>
+            <button type="submit">Buscar</button>
+        </form>
+
+        {% if grupo %}
+            <h2>Curso {{ grupo }}</h2>
+
+            <form method="POST">
+
+                <input type="hidden", name="grupo" value="{{ grupo }}">
+                <input type="hidden" name="fecha" value="{{ fecha }}">
+
+                <table>
+                    <tr>
+                        <th>Estudiantes</th>
+                        <th>Correo</th>
+                        <th>Asistió</th>
+                        <th>No Asistió</th>
+                    </tr>
+
+                    {% for estudiante in estudiantes %}
+                    <tr>
+                        <td>{{ estudiante.usuario }}</td>
+
+                        <td>{{ estudiante.email }}</td>
+
+                        <td>
+                            <input type="radio"
+                                name="asistencia_{{ estudiante.usuario }}"
+                                value="si">
+                        </td>
+
+                        <td>
+                            <input type="radio"
+                                name="asistencia_{{ estudiante.usuario }}"
+                                value="no">
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+                <button type="submit" class="guardar-btn">Guardar Asistencias</button>
+
+                <a href="/historial">Ver Historial</a>
+
+                <a href="/pagina_principal" class="btn-back">Volver a Inicio</a>
+
+            </form>
+        {% endif %}
+
+    </div>
+</body>
+</html>

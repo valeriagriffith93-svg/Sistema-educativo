@@ -1,0 +1,268 @@
+/* ===== IMPORTAR FUENTE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY CON FONDO ANIMADO ===== */
+body {
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0e6ff;
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(249, 100, 210, 0.45) 0%, transparent 35%),
+        radial-gradient(circle at 80% 5%,  rgba(139, 92, 246, 0.4)  0%, transparent 30%),
+        radial-gradient(circle at 95% 60%, rgba(167, 60, 230, 0.35) 0%, transparent 28%),
+        radial-gradient(circle at 20% 85%, rgba(244, 63, 142, 0.4)  0%, transparent 32%),
+        radial-gradient(circle at 60% 90%, rgba(192, 132, 252, 0.3) 0%, transparent 30%),
+        linear-gradient(145deg, #fce4f3 0%, #ede0ff 40%, #ddd6fe 70%, #fce7f3 100%);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Blob arriba derecha */
+body::before {
+    content: '';
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    top: -100px;
+    right: -80px;
+    background: linear-gradient(135deg, rgba(201, 91, 230, 0.35), rgba(124, 58, 237, 0.25));
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    animation: flotar 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Blob abajo izquierda */
+body::after {
+    content: '';
+    position: fixed;
+    width: 360px;
+    height: 360px;
+    bottom: -80px;
+    left: -70px;
+    background: linear-gradient(135deg, rgba(244, 63, 142, 0.28), rgba(168, 85, 247, 0.22));
+    border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
+    animation: flotar 11s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes flotar {
+    0%   { transform: translate(0, 0)        rotate(0deg);  }
+    33%  { transform: translate(14px, -20px)  rotate(5deg);  }
+    66%  { transform: translate(-10px, 12px)  rotate(-4deg); }
+    100% { transform: translate(0, 0)        rotate(0deg);  }
+}
+
+/* ===== CONTENEDOR PERFIL ===== */
+.profile-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow:
+        0 20px 60px rgba(124, 58, 237, 0.18),
+        0 4px 16px rgba(201, 91, 230, 0.12);
+    padding: 48px 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    animation: entrar 0.6s ease both;
+}
+
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== TÍTULO ===== */
+.profile-container h2 {
+    font-size: 30px;
+    font-weight: 900;
+    color: #4c1d95;
+    text-align: center;
+}
+
+.profile-container h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #c95be6, #7c3aed);
+    border-radius: 4px;
+    margin: 10px auto 0;
+}
+
+/* ===== AVATAR / ÍCONO PRINCIPAL ===== */
+.profile-icon {
+    font-size: 56px;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #c95be6, #7c3aed);
+    color: #fff;
+    border-radius: 50%;
+    box-shadow:
+        0 10px 30px rgba(124, 58, 237, 0.4),
+        0 0 0 6px rgba(168, 85, 247, 0.15);
+    margin: 8px 0 4px;
+    animation: pulsar 3s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+    0%   { box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4), 0 0 0 6px rgba(168, 85, 247, 0.15); }
+    50%  { box-shadow: 0 14px 38px rgba(124, 58, 237, 0.5), 0 0 0 12px rgba(168, 85, 247, 0.1); }
+    100% { box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4), 0 0 0 6px rgba(168, 85, 247, 0.15); }
+}
+
+/* ===== ITEMS DE PERFIL ===== */
+.profile-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(237, 224, 255, 0.45);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 16px;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4c1d95;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.profile-item:hover {
+    background: rgba(237, 224, 255, 0.8);
+    transform: translateX(5px);
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.12);
+}
+
+.profile-item i {
+    font-size: 18px;
+    color: #a855f7;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.profile-item span {
+    color: #7c3aed;
+    font-weight: 900;
+    margin-right: 4px;
+}
+
+/* ===== BOTONES ===== */
+.btn-back {
+    position: relative;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Círculos decorativos botón */
+.btn-back::before {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    top: -28px;
+    right: -16px;
+}
+
+.btn-back::after {
+    content: '';
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.10);
+    bottom: -16px;
+    left: 14px;
+}
+
+/* Botón 1 — morado (Volver a Inicio) */
+.btn-back:first-of-type {
+    background: linear-gradient(135deg, #c95be6 0%, #7c3aed 100%);
+    box-shadow: 0 10px 28px rgba(124, 58, 237, 0.45);
+}
+
+.btn-back:first-of-type:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 36px rgba(124, 58, 237, 0.55);
+}
+
+/* Botón 2 — rosa (Editar Perfil) */
+.btn-back:last-of-type {
+    background: linear-gradient(135deg, #f43f8e 0%, #a855f7 100%);
+    box-shadow: 0 10px 28px rgba(244, 63, 142, 0.4);
+}
+
+.btn-back:last-of-type:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 36px rgba(244, 63, 142, 0.5);
+}
+
+.btn-back:active {
+    transform: scale(0.97);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .profile-container {
+        padding: 36px 24px;
+        border-radius: 28px;
+    }
+
+    .profile-container h2 {
+        font-size: 26px;
+    }
+
+    .profile-icon {
+        width: 90px;
+        height: 90px;
+        font-size: 44px;
+    }
+
+    .profile-item {
+        font-size: 14px;
+        padding: 14px 16px;
+    }
+}

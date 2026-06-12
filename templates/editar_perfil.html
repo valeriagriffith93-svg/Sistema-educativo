@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="../static/editar_perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <h1>Editar Perfil</h1>
+
+    <form method="POST">
+
+        <label>Usuario:</label>
+        <input type="text" name="usuario" value="{{ usuario }}">
+
+        <br><br>
+
+        <label>Correo:</label>
+        <input type="email" name="email" value="{{ email }}">
+
+        <br><br>
+
+        <label>Dirección:</label>
+        <input type="text" name="direccion" value="{{ direccion }}">
+
+        <br><br>
+
+        <button type="submit">
+            Guardar Cambios
+        </button>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+/* ===== RESET ===== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f5f2ae, #fcd3cc, #bb93cc);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== CONTENEDOR ===== */
+
+.container{
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+/* ===== ICONO ===== */
+
+.lock-icon{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#bb93cc,#fcd3cc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 45px;
+    box-shadow: 0 8px 20px rgba(187,147,204,0.35);
+}
+
+/* ===== TITULO ===== */
+
+h1{
+    color: #7b4f93;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+/* ===== FORMULARIO ===== */
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    text-align: left;
+    margin-bottom: 8px;
+    color: #666;
+    font-weight: 600;
+}
+
+/* ===== INPUT ===== */
+
+.form-group{
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group input{
+    width: 100%;
+    padding: 14px 50px 14px 15px;
+    border: 2px solid #fcd3cc;
+    border-radius: 15px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    background: #fff;
+}
+
+.form-group input:focus{
+    border-color: #bb93cc;
+    box-shadow: 0 0 12px rgba(187,147,204,0.3);
+}
+
+.form-group input::placeholder{
+    color: #999;
+}
+
+/* ===== OJO CONTRASEÑA ===== */
+
+.toggle-password{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #bb93cc;
+    font-size: 18px;
+}
+
+/* ===== BOTÓN ===== */
+
+button{
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg,#bb93cc,#fcd3cc);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(187,147,204,0.35);
+}
+
+/* ===== MENSAJES ===== */
+
+.flash-message{
+    background: #fdf4ff;
+    border: 2px solid #bb93cc;
+    color: #7b4f93;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* ===== LINK ===== */
+
+p{
+    margin-top: 20px;
+    color: #666;
+}
+
+p a{
+    color: #bb93cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover{
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+
+    .container{
+        margin: 20px;
+        padding: 30px;
+    }
+
+    h1{
+        font-size: 1.7rem;
+    }
+
+    .lock-icon{
+        width: 80px;
+        height: 80px;
+        font-size: 35px;
+    }
+}

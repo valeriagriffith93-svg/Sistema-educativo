@@ -1,0 +1,249 @@
+/* ===== IMPORTAR FUENTE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY — FONDO CLARO ===== */
+body {
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0e6ff;
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(249, 100, 210, 0.4)  0%, transparent 35%),
+        radial-gradient(circle at 85% 8%,  rgba(139, 92, 246, 0.35) 0%, transparent 30%),
+        radial-gradient(circle at 90% 70%, rgba(167, 60, 230, 0.3)  0%, transparent 28%),
+        radial-gradient(circle at 15% 80%, rgba(244, 63, 142, 0.35) 0%, transparent 32%),
+        linear-gradient(145deg, #fce4f3 0%, #ede0ff 40%, #ddd6fe 70%, #fce7f3 100%);
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Blob arriba derecha */
+body::before {
+    content: '';
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -80px;
+    background: linear-gradient(135deg, rgba(201, 91, 230, 0.3), rgba(124, 58, 237, 0.2));
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    animation: flotar 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Blob abajo izquierda */
+body::after {
+    content: '';
+    position: fixed;
+    width: 340px;
+    height: 340px;
+    bottom: -80px;
+    left: -70px;
+    background: linear-gradient(135deg, rgba(244, 63, 142, 0.25), rgba(168, 85, 247, 0.2));
+    border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
+    animation: flotar 11s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes flotar {
+    0%   { transform: translate(0, 0)        rotate(0deg);  }
+    33%  { transform: translate(14px, -20px)  rotate(5deg);  }
+    66%  { transform: translate(-10px, 12px)  rotate(-4deg); }
+    100% { transform: translate(0, 0)        rotate(0deg);  }
+}
+
+/* ===== TÍTULO ===== */
+h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 32px;
+    font-weight: 900;
+    color: #4c1d95;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #c95be6, #7c3aed);
+    border-radius: 4px;
+    margin: 10px auto 0;
+}
+
+/* ===== TARJETA FORMULARIO ===== */
+form {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 20px 60px rgba(124, 58, 237, 0.15),
+        0 4px 16px rgba(201, 91, 230, 0.1);
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: entrar 0.6s ease both;
+}
+
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(28px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* ===== NOMBRE DEL ESTUDIANTE ===== */
+form p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(237, 224, 255, 0.6);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 16px;
+    padding: 16px 20px;
+    font-size: 17px;
+    font-weight: 900;
+    color: #4c1d95;
+}
+
+form p::before {
+    content: '👤';
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+/* ===== LABEL ESTADO ===== */
+form::before {
+    content: 'Estado de asistencia';
+    font-size: 13px;
+    font-weight: 800;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: -10px;
+    padding-left: 4px;
+}
+
+/* ===== SELECT ===== */
+select {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid rgba(168, 85, 247, 0.25);
+    border-radius: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #4c1d95;
+    background: rgba(255, 255, 255, 0.75);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    padding-right: 48px;
+    transition: border 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+select:focus {
+    border-color: #a855f7;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15);
+}
+
+select option {
+    font-weight: 700;
+    color: #4c1d95;
+    background: #fff;
+    padding: 10px;
+}
+
+/* ===== BOTÓN GUARDAR ===== */
+button[type="submit"] {
+    position: relative;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #c95be6 0%, #7c3aed 100%);
+    box-shadow:
+        0 10px 28px rgba(124, 58, 237, 0.45),
+        0 4px 10px rgba(124, 58, 237, 0.2);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 4px;
+}
+
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    top: -35px;
+    right: -20px;
+}
+
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.10);
+    bottom: -20px;
+    left: 16px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 16px 38px rgba(124, 58, 237, 0.55),
+        0 6px 14px rgba(124, 58, 237, 0.3);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.97);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    h1 { font-size: 26px; }
+
+    form {
+        padding: 32px 22px;
+        border-radius: 24px;
+    }
+
+    select,
+    button[type="submit"] {
+        font-size: 15px;
+        padding: 14px 16px;
+    }
+}

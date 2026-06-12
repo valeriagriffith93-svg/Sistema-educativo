@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Notas</title>
+    <link rel="stylesheet" href="../static/mis_notas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h1>
+            <i class="fas fa-star"></i>
+            Mis Notas
+        </h1>
+
+        <!-- Cards resumen -->
+        <div class="resumen-grid">
+            <div class="card-resumen">
+                <span class="emoji">📚</span>
+                <span class="numero" id="total-tareas">0</span>
+                <span class="etiqueta">Total tareas</span>
+            </div>
+            <div class="card-resumen">
+                <span class="emoji">✅</span>
+                <span class="numero" id="calificadas">0</span>
+                <span class="etiqueta">Calificadas</span>
+            </div>
+            <div class="card-resumen especial">
+                <span class="emoji">🎯</span>
+                <span class="numero" id="promedio">—</span>
+                <span class="etiqueta">Promedio</span>
+            </div>
+        </div>
+
+        <!-- Tabla notas -->
+        <div class="tabla-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-tasks"></i> Tarea</th>
+                        <th><i class="fas fa-star"></i> Nota</th>
+                        <th><i class="fas fa-comment-alt"></i> Comentario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for nota in notas %}
+                    <tr>
+                        <td>{{ nota.titulo }}</td>
+
+                        <td>
+                            {% if nota.nota %}
+                                {% set n = nota.nota | float %}
+                                {% if n >= 4.5 %}
+                                    <span class="badge-nota nota-excelente">{{ nota.nota }}</span>
+                                {% elif n >= 3.5 %}
+                                    <span class="badge-nota nota-buena">{{ nota.nota }}</span>
+                                {% elif n >= 3.0 %}
+                                    <span class="badge-nota nota-regular">{{ nota.nota }}</span>
+                                {% else %}
+                                    <span class="badge-nota nota-baja">{{ nota.nota }}</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="badge-nota nota-pendiente">⏳ Pendiente</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if nota.comentario %}
+                                {{ nota.comentario }}
+                            {% else %}
+                                <span class="sin-comentario">Sin comentario aún</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="/pagina_principal" class="btn-volver">
+            <i class="fas fa-arrow-left"></i>
+            <span>Volver al Inicio</span>
+        </a>
+
+    </div>
+
+    <script>
+        // Calcular resumen automático
+        const filas = document.querySelectorAll('tbody tr');
+        let calificadas = 0;
+        let suma = 0;
+
+        filas.forEach(fila => {
+            const badge = fila.querySelector('.badge-nota');
+            if (badge && !badge.classList.contains('nota-pendiente')) {
+                const val = parseFloat(badge.textContent.trim());
+                if (!isNaN(val)) { suma += val; calificadas++; }
+            }
+        });
+
+        document.getElementById('total-tareas').textContent = filas.length;
+        document.getElementById('calificadas').textContent = calificadas;
+        document.getElementById('promedio').textContent =
+            calificadas > 0 ? (suma / calificadas).toFixed(1) : '—';
+    </script>
+
+</body>
+</html>

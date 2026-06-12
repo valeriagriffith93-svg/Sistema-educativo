@@ -1,0 +1,284 @@
+/* ===== IMPORTAR FUENTE ===== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY — FONDO CLARO ===== */
+body {
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0e6ff;
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(249, 100, 210, 0.4)  0%, transparent 35%),
+        radial-gradient(circle at 85% 8%,  rgba(139, 92, 246, 0.35) 0%, transparent 30%),
+        radial-gradient(circle at 90% 70%, rgba(167, 60, 230, 0.3)  0%, transparent 28%),
+        radial-gradient(circle at 15% 80%, rgba(244, 63, 142, 0.35) 0%, transparent 32%),
+        linear-gradient(145deg, #fce4f3 0%, #ede0ff 40%, #ddd6fe 70%, #fce7f3 100%);
+    padding: 20px;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -80px;
+    background: linear-gradient(135deg, rgba(201, 91, 230, 0.3), rgba(124, 58, 237, 0.2));
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    animation: flotar 9s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    width: 340px;
+    height: 340px;
+    bottom: -80px;
+    left: -70px;
+    background: linear-gradient(135deg, rgba(244, 63, 142, 0.25), rgba(168, 85, 247, 0.2));
+    border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
+    animation: flotar 11s ease-in-out infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes flotar {
+    0%   { transform: translate(0, 0)        rotate(0deg);  }
+    33%  { transform: translate(14px, -20px)  rotate(5deg);  }
+    66%  { transform: translate(-10px, 12px)  rotate(-4deg); }
+    100% { transform: translate(0, 0)        rotate(0deg);  }
+}
+
+/* ===== CONTENEDOR ===== */
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 20px 60px rgba(124, 58, 237, 0.15),
+        0 4px 16px rgba(201, 91, 230, 0.1);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: entrar 0.6s ease both;
+}
+
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(28px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* ===== TÍTULO ===== */
+.container h1 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #4c1d95;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.container h1 i {
+    font-size: 28px;
+    color: #a855f7;
+}
+
+.container h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #c95be6, #7c3aed);
+    border-radius: 4px;
+    margin: 10px auto 0;
+}
+
+/* ===== CARDS DE ESTADÍSTICAS ===== */
+.estadistica {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(237, 224, 255, 0.5);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 18px;
+    padding: 18px 24px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #4c1d95;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.estadistica::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(168, 85, 247, 0.08);
+    top: -25px;
+    right: -20px;
+}
+
+.estadistica:hover {
+    background: rgba(237, 224, 255, 0.85);
+    transform: translateX(5px);
+    box-shadow: 0 4px 18px rgba(124, 58, 237, 0.12);
+}
+
+/* Ícono por tipo de estadística */
+.estadistica:nth-child(2)::after { content: '📊'; font-size: 26px; }
+.estadistica:nth-child(3)::after { content: '✅'; font-size: 26px; }
+.estadistica:nth-child(4)::after { content: '❌'; font-size: 26px; }
+
+/* ===== CARD PORCENTAJE — ESPECIAL ===== */
+.estadistica.porcentaje {
+    background: linear-gradient(135deg, #c95be6 0%, #7c3aed 100%);
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    box-shadow: 0 10px 28px rgba(124, 58, 237, 0.4);
+    margin-top: 4px;
+}
+
+.estadistica.porcentaje::before {
+    background: rgba(255, 255, 255, 0.12);
+    width: 100px;
+    height: 100px;
+    top: -30px;
+    right: -25px;
+}
+
+.estadistica.porcentaje::after {
+    content: '🎯';
+    font-size: 28px;
+}
+
+.estadistica.porcentaje:hover {
+    background: linear-gradient(135deg, #d46ef0 0%, #8b4cf7 100%);
+    transform: translateX(5px) scale(1.01);
+    box-shadow: 0 14px 34px rgba(124, 58, 237, 0.5);
+    color: #ffffff;
+}
+
+/* ===== BARRA DE PROGRESO ===== */
+.barra-wrap {
+    background: rgba(237, 224, 255, 0.5);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 18px;
+    padding: 18px 24px;
+}
+
+.barra-label {
+    font-size: 13px;
+    font-weight: 800;
+    color: #7c3aed;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+}
+
+.barra-fondo {
+    width: 100%;
+    height: 14px;
+    background: rgba(168, 85, 247, 0.15);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.barra-relleno {
+    height: 100%;
+    background: linear-gradient(90deg, #f43f8e, #a855f7);
+    border-radius: 50px;
+    transition: width 1.2s ease;
+}
+
+/* ===== BOTÓN VOLVER ===== */
+.container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 16px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #f43f8e 0%, #a855f7 100%);
+    box-shadow: 0 10px 26px rgba(244, 63, 142, 0.4);
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.container a::before {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    top: -28px;
+    right: -16px;
+}
+
+.container a:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 34px rgba(244, 63, 142, 0.5);
+}
+
+.container a:active {
+    transform: scale(0.97);
+}
+
+.container a i {
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 36px 22px;
+        border-radius: 28px;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .estadistica {
+        font-size: 14px;
+        padding: 14px 18px;
+    }
+
+    .estadistica.porcentaje {
+        font-size: 16px;
+    }
+}

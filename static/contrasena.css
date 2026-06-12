@@ -1,0 +1,98 @@
+body {
+    background: linear-gradient(135deg, #f5f2ae, #fcd3cc, #bb93cc);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 35px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* Título */
+h1 {
+    color: #7b4f93;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+/* Etiqueta */
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Grupo input */
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.form-group .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bb93cc;
+    font-size: 18px;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 14px 14px 45px;
+    border: 2px solid #fcd3cc;
+    border-radius: 15px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #bb93cc;
+    box-shadow: 0 0 10px rgba(187, 147, 204, 0.4);
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #bb93cc, #fcd3cc);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(187, 147, 204, 0.4);
+}
+
+/* Mensajes */
+.flash-message {
+    background: #fdf4ff;
+    border: 2px solid #bb93cc;
+    color: #7b4f93;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}

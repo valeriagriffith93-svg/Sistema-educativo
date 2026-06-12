@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Tareas</title>
+    <link rel="stylesheet" href="../static/mis_tareas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h1>
+            <i class="fas fa-book-open"></i>
+            Mis Tareas
+        </h1>
+
+        {% for tarea in tareas %}
+        <div class="tarea-card">
+
+            <!-- IZQUIERDA — INFO -->
+            <div class="tarea-info">
+                <div class="tarea-numero">
+                    <i class="fas fa-hashtag"></i>
+                    Tarea {{ loop.index }}
+                </div>
+
+                <h3>{{ tarea.titulo }}</h3>
+
+                <p class="tarea-desc">{{ tarea.descripcion }}</p>
+
+                <div class="tarea-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-star"></i>
+                        <span>Nota:</span>
+
+                        <span class="meta-badge">
+                            {{ tarea.nota if tarea.nota else 'Pendiente'}}
+                        </span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>Grupo:</span>
+                        <span class="meta-badge">{{ tarea.grupo }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Entrega:</span>
+                        <span class="meta-badge">{{ tarea.fecha_entrega if tarea.fecha_entrega else 'Por definir' }}</span>
+                    </div>
+                </div>
+
+                <div class="comentario-profesor">
+                    <strong>Observaciones:</strong>
+
+                    <p>
+                        {{ tarea.comentario if tarea.comentario else 'Sin comentario del profesor'}}
+                    </p>
+                </div>
+            </div>
+
+            <!-- DERECHA — ENTREGA -->
+            <div class="entrega">
+                <p class="entrega-titulo">
+                    <i class="fas fa-upload"></i>
+                    Entregar Tarea
+                </p>
+
+                <form method="POST" action="/entregar_tarea"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="tarea_id" value="{{ tarea._id }}">
+
+                    <div class="file-zona" id="zona-{{ loop.index }}">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Arrastra tu archivo aquí
+                            <span>o haz clic para seleccionar</span>
+                        </p>
+                        <input type="file" name="archivo"
+                               id="file-{{ loop.index }}"
+                               required>
+                    </div>
+
+                    <p class="file-nombre" id="nombre-{{ loop.index }}">
+                        Ningún archivo seleccionado
+                    </p>
+
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Entregar Tarea</span>
+                    </button>
+
+                    <div class="estado-entrega">
+                        {% if tarea.estado == 'Entregado' %}
+                            ✅ Entregada
+                        {% else %}
+                            ⏳ Pendiente
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        {% endfor %}
+
+        <a href="/pagina_principal" class="btn-volver">
+            <i class="fas fa-arrow-left"></i>
+            Volver al Inicio
+        </a>
+
+    </div>
+
+    <script>
+        // Mostrar nombre del archivo seleccionado
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', () => {
+                const idx = input.id.split('-')[1];
+                const nombre = document.getElementById('nombre-' + idx);
+                if (input.files.length > 0) {
+                    nombre.textContent = '📎 ' + input.files[0].name;
+                } else {
+                    nombre.textContent = 'Ningún archivo seleccionado';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

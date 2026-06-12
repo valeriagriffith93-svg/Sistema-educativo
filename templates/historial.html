@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial</title>
+    <link rel="stylesheet" href="../static/historial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <h1>Historial de Asistencias</h1>
+
+    <form method="GET">
+        <input type="date" name="fecha">
+
+        <button type="submit">
+            Buscar
+        </button>
+    </form>
+    <br>
+
+    <h2>Grupo 1001</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1001 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Grupo 1002</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1002 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Grupo 1003</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1003 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Grupo 1004</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1004 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Grupo 1101</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1101 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Grupo 1102</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1102 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Grupo 1103</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1103 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Grupo 1104</h2>
+
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Estudiante</th>
+            <th>Correo</th>
+            <th>Estado</th>
+            <th>Asistencia</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for asistencia in grupo1104 %}
+        <tr>
+            <td>{{ asistencia.fecha }}</td>
+            <td>{{ asistencia.usuario }}</td>
+            <td>{{ asistencia.correo }}</td>
+            <td>{{ asistencia.grupo }}</td>
+            <td>{{ asistencia.estado }}</td>
+
+            <td>
+                <a href="/editar_asistencia/{{ asistencia._id }}">
+                    Editar
+                </a>
+
+                <a href="/eliminar_asistencia/{{ asistencia._id}}">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/asistencias" class="btn-back">Volver a Asistencia</a>
+    <script>
+    document.querySelectorAll('td:nth-child(5)').forEach(td => {
+        const texto = td.textContent.trim().toLowerCase();
+        if (texto === 'si' || texto === 'sí') {
+            td.innerHTML = `<span class="badge-si">✓ Asistió</span>`;
+        } else if (texto === 'no') {
+            td.innerHTML = `<span class="badge-no">✗ Faltó</span>`;
+        }
+    });
+</script>
+</body>
+</html>

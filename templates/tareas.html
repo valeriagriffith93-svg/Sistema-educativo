@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Tareas</title>
+    <link rel="stylesheet" href="../static/crear_tareas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <h1>
+            <i class="fas fa-tasks"></i>
+            Crear Tarea
+        </h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-ok">✅ {{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+
+            <label class="campo-label">
+                <i class="fas fa-heading"></i> Título
+            </label>
+            <input type="text" name="titulo"
+                   placeholder="Escribe el título de la tarea"
+                   value="{{ tarea.titulo if tarea else ''}}" required>
+
+            <label class="campo-label">
+                <i class="fas fa-align-left"></i> Descripción
+            </label>
+            <textarea name="descripcion" id="descripcion"
+                      placeholder="Describe la tarea detalladamente..."
+                      required>{{ tarea.descripcion if tarea else '' }}</textarea>
+            <span class="contador" id="contador">0 caracteres</span>
+
+            <label class="campo-label">
+                <i class="fas fa-users"></i> Grupo
+            </label>
+
+            <input type="text" name="grupo"
+                   placeholder="Ej: 1101" value="{{ tarea.grupo if tarea else '' }}" required>
+
+                   <label>Fecha de Entrega</label>
+            <input type="date" name="fecha_entrega" required>
+
+            <button type="submit">
+                <i class="fas fa-save"></i>
+                {% if tarea %}
+                    <span>Actualizar Tarea</span>
+                {% else %}
+                    <span>Guardar Tarea</span>
+                {% endif %}
+            </button>
+
+        </form>
+
+        <hr>
+
+        <h2>
+            <i class="fas fa-list-alt"></i>
+            Tareas Creadas
+        </h2>
+
+        <div class="tabla-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Grupo</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tarea in tareas %}
+                    <tr>
+                        <td>{{ tarea.titulo }}</td>
+                        <td>{{ tarea.descripcion }}</td>
+                        <td><span>{{ tarea.grupo }}</span></td>
+                        <td>{{ tarea.fecha_entrega }}</td>
+                        <td>
+                            <a href="/editar_tarea/{{ tarea._id }}">
+                                ✏️ Editar
+                            </a>
+                            <a href="/eliminar_tarea/{{ tarea._id }}">
+                                🗑️ Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        const textarea = document.getElementById('descripcion');
+        const contador = document.getElementById('contador');
+        textarea.addEventListener('input', () => {
+            const n = textarea.value.length;
+            contador.textContent = n + ' caracter' + (n === 1 ? '' : 'es');
+        });
+    </script>
+
+</body>
+</html>
